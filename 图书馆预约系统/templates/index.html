@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}座位预约{% endblock %}
+{% block content %}
+
+<div class="main-panel">
+    <div class="panel-header">
+        <div class="floor-selector">
+            <button class="floor-btn active" data-floor="1">1层</button>
+            <button class="floor-btn" data-floor="2">2层</button>
+            <button class="floor-btn" data-floor="3">3层</button>
+        </div>
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color available"></span>可预约</div>
+            <div class="legend-item"><span class="legend-color reserved"></span>已被预约</div>
+            <div class="legend-item"><span class="legend-color selected"></span>已选中</div>
+            <div class="legend-item"><span class="legend-color occupied"></span>已占用</div>
+            <div class="legend-item"><span class="legend-color unavailable"></span>无法预约</div>
+        </div>
+    </div>
+    <div class="floor-stats" id="floor-stats"></div>
+    <div class="seat-map" id="seat-map">
+    </div>
+    <div class="action-panel" id="action-panel">
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

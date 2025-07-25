@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% if is_register %}注册{% elif is_admin_login %}管理员登录{% else %}用户登录{% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="form-container">
+    <h2>{% if is_register %}创建账户{% elif is_admin_login %}管理员登录{% else %}用户登录{% endif %}</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('register') if is_register else url_for('login', admin_login=is_admin_login) }}">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn-primary">
+                {% if is_register %}注册{% else %}登录{% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

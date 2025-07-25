@@ -1,0 +1,21 @@
+{% extends "admin_layout.html" %}
+{% block admin_title %}预约管理{% endblock %}
+{% block admin_content %}
+    <h1>预约管理</h1>
+    <div class="main-panel">
+        <div class="panel-header">
+            <div class="floor-selector">
+                <button class="floor-btn active" data-floor="1">1层</button>
+                <button class="floor-btn" data-floor="2">2层</button>
+                <button class="floor-btn" data-floor="3">3层</button>
+            </div>
+            <div class="legend">
+            </div>
+        </div>
+        <div class="floor-stats" id="floor-stats"></div>
+        <div class="seat-map" id="seat-map"></div>
+    </div>
+{% endblock %}
+{% block admin_scripts %}
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

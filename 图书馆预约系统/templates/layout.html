@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh-CN"> 
+
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>{% block title %}图书馆预约系统{% endblock %}</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+</head>
+
+<body> 
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">图书馆座位预约系统</a>
+            <ul class="navbar-nav">
+                {% if 'user_id' in session %}
+                    <li class="nav-item"><span class="nav-link">欢迎, {{ session.username }}</span></li> 
+                    {% if session.is_admin %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_reservations') }}">后台管理</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">退出登录</a></li> 
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">登录</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">注册</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login', admin_login=True) }}">管理员入口</a></li> 
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
