@@ -2,9 +2,9 @@
 依赖的第三方库有：
 
 ```
-Flask
-Flask_SQLAlchemy
-mysql-connector-python
+Flask-3.0.3
+Flask_SQLAlchemy-3.1.1
+mysql-connector-python-9.4.0
 ```
 
 运行方式：
